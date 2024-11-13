@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"*.html": "twig",
+		"push_swap.h": "c"
+	}
+}
