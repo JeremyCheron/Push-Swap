@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/11/08 12:23:21 by jcheron          ###   ########.fr        #
+#    Updated: 2024/12/10 11:12:02 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INC_DIR				:=		include
 OBJ_DIR				:=		obj
 TARGET				:=		push_swap.a
 CC					:=		cc
-CCFLAGS				:=		-Wall -Werror -Wextra
+CCFLAGS				:=		-Wall -Werror -Wextra -g
 # include	srcs.mk
 
 FILES = $(shell find $(SRC_DIR) -type f -name "*.c" | sed 's/\.c//' | sed 's/$(SRC_DIR)//')
@@ -64,6 +64,7 @@ $(TARGET): _header _obj_header $(OBJS) _obj_footer
 	@printf "$(MAGENTA)Making archive $(BLUE)\"%s\"$(MAGENTA)...$(DEF_COLOR)" $@
 	@ar -rcs $@ $(OBJS)
 	@printf "$(TERM_CLEAR_LINE)$(GREEN)Done building archive $(BLUE)\"%s\"$(GREEN) !\n$(DEF_COLOR)" $@
+	$(CC) $(OBJS) -o push_swap $(CCFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@

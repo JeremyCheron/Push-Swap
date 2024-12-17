@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_swap.c                                          :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 12:34:17 by jcheron           #+#    #+#             */
-/*   Updated: 2024/11/13 06:25:26 by jcheron          ###   ########.fr       */
+/*   Created: 2024/12/17 13:42:24 by jcheron           #+#    #+#             */
+/*   Updated: 2024/12/17 13:44:49 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	_swap(t_dlist **stack)
+void	sort_three(t_stack_node **a)
 {
-	t_dlist	*first;
-	t_dlist	*second;
-	t_dlist	*rest;
+	t_stack_node	*biggest_node;
 
-	if (*stack == NULL)
-		return ;
-	first = *stack;
-	second = first->next;
-	rest = second->next;
-	first->next = rest;
-	second->next = first;
-	*stack = second;
-}
-
-void		ps_swap_a(t_ps *ps)
-{
-	_swap(&ps->a);
-}
-
-void		ps_swap_b(t_ps *ps)
-{
-	_swap(&ps->b);
-}
-
-void		ps_swap_s(t_ps *ps)
-{
-	_swap(&ps->a);
-	_swap(&ps->b);
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
+		ra(a, false);
+	else if ((*a)->next == biggest_node)
+		rra(a, false);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a, false);
 }

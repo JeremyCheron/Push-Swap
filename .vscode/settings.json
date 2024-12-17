@@ -1,6 +1,8 @@
 {
 	"files.associations": {
+		"*.dbclient-js": "javascript",
 		"*.html": "twig",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"climits": "c"
 	}
 }

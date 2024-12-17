@@ -6,23 +6,34 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:48:46 by jcheron           #+#    #+#             */
-/*   Updated: 2024/11/13 06:54:33 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/17 15:45:06 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int main(int ac, char **av)
 {
-	t_ps	*ps;
-	int		size;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
-	ps = ps_init(argc, argv);
-	size = get_stack_size(ps->a);
-	print_stack(ps->a);
-	quick_sort(ps, size);
-	print_stack(ps->a);
-	free_ps(ps);
-
+	a = NULL;
+	b = NULL;
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	else if (ac == 2)
+		av = ft_split(av[1], ' ');
+	init_stack_a(&a, av + 1);
+	if (!stack_sorted(a))
+	{
+		if (stack_len(a) == 2)
+			sa(&a, false);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+		else
+			sort_stacks(&a, &b);
+	}
+	free_stack(&a);
 	return (0);
 }
+
