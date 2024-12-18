@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/12/10 11:12:02 by jcheron          ###   ########.fr        #
+#    Updated: 2024/12/18 17:07:17 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ECHO				=		/usr/bin/echo
 SRC_DIR				:=		src
 INC_DIR				:=		include
 OBJ_DIR				:=		obj
-TARGET				:=		push_swap.a
+NAME				:=		push_swap.a
 CC					:=		cc
 CCFLAGS				:=		-Wall -Werror -Wextra -g
 # include	srcs.mk
@@ -60,11 +60,11 @@ TERM_CLEAR_LINE		=	\033[2K\r
 #                                                                              #
 # ############################################################################ #
 
-$(TARGET): _header _obj_header $(OBJS) _obj_footer
+$(NAME): _header _obj_header $(OBJS) _obj_footer
 	@printf "$(MAGENTA)Making archive $(BLUE)\"%s\"$(MAGENTA)...$(DEF_COLOR)" $@
 	@ar -rcs $@ $(OBJS)
 	@printf "$(TERM_CLEAR_LINE)$(GREEN)Done building archive $(BLUE)\"%s\"$(GREEN) !\n$(DEF_COLOR)" $@
-	$(CC) $(OBJS) -o push_swap $(CCFLAGS)
+	@$(CC) $(OBJS) -o push_swap $(CCFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@
@@ -80,15 +80,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 .PHONY:	all clean fclean re norminette _header _obj_header _obj_footer test
 
-all:	$(TARGET)
+all:	$(NAME)
 
 clean:
 		@printf "$(YELLOW)Removing %d objects...\n$(DEF_COLOR)" $(words $(OBJS))
 		@$(RM) -rf $(OBJ_DIR)
 
 fclean: clean
-		@printf "$(YELLOW)Removing \"%s\"...\n$(DEF_COLOR)" $(TARGET)
-		@$(RM) $(TARGET)
+		@printf "$(YELLOW)Removing \"%s\"...\n$(DEF_COLOR)" $(NAME)
+		@$(RM) $(NAME)
 
 re:		fclean all
 
@@ -98,7 +98,7 @@ norminette:
 		|| $(ECHO) -e '\033[1;32mNorminette OK!'
 
 _header:
-		@printf "$(GREEN)Welcome to $(BLUE)\"%s\"$(GREEN) builder !\n$(DEF_COLOR)" $(TARGET)
+		@printf "$(GREEN)Welcome to $(BLUE)\"%s\"$(GREEN) builder !\n$(DEF_COLOR)" $(NAME)
 
 _obj_header:
 		@printf "$(MAGENTA)Building objects$(DEF_COLOR)...\n"
