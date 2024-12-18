@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:47:27 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/17 14:58:05 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:04:26 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ void	rr(t_stack_node **a, t_stack_node **b, bool print)
 }
 
 void	rotate_both(t_stack_node **a,
-					t_stack_node **b,
-					t_stack_node *cheapest_node)
+						t_stack_node **b,
+						t_stack_node *cheapest_node)
 {
-	while (*b != cheapest_node->target_node && *a != cheapest_node)
+	while (*b != cheapest_node->target_node
+		&& *a != cheapest_node)
 		rr(a, b, false);
 	current_index(*a);
 	current_index(*b);

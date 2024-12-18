@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:00:07 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/17 08:00:42 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/18 16:46:19 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,14 @@ char	**ft_split(char const *s, char c)
 	}
 	split[i] = NULL;
 	return (split);
+}
+
+void	free_tab(char **tab)
+{
+	while (**tab)
+	{
+		free(*tab);
+		tab++;
+	}
+	free(tab);
 }

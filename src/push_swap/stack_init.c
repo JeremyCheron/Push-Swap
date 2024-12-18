@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:29:44 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/17 15:37:19 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:10:56 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	append_node(t_stack_node **stack, int n)
 		return ;
 	node->next = NULL;
 	node->nbr = n;
+	node->cheapest = 0;
 	if (!(*stack))
 	{
 		*stack = node;

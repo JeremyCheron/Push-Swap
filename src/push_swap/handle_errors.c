@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:38:10 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/17 15:44:56 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:21:54 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	error_syntax(char *str_n)
 {
 	if (!(*str_n == '+'
-		|| *str_n == '-'
-		|| ft_isdigit(*str_n)))
+			|| *str_n == '-'
+			|| ft_isdigit(*str_n)))
 		return (1);
 	if ((*str_n == '+'
-		|| *str_n == '-'
-		&& !ft_isdigit(str_n[1])))
+			|| *str_n == '-'
+			&& !ft_isdigit(str_n[1])))
 		return (1);
 	while (*++str_n)
 	{
@@ -41,7 +41,6 @@ int	error_duplicate(t_stack_node *a, int n)
 		a = a->next;
 	}
 	return (0);
-
 }
 
 void	free_stack(t_stack_node **stack)

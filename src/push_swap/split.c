@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:19:33 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/17 15:20:17 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/18 16:52:32 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ char	**split(char *s, char c)
 		return (NULL);
 	while (words_count-- >= 0)
 	{
-		if ( i == 0)
+		if (i == 0)
 		{
 			result_array[i] = malloc(sizeof(char));
-			if (!result_array[i]);
+			if (!result_array[i])
 				return (NULL);
 			result_array[i++][0] = '\0';
 			continue ;
@@ -86,3 +86,19 @@ char	**split(char *s, char c)
 	result_array[i] = NULL;
 	return (result_array);
 }
+
+void	free_split(char **split_array)
+{
+	int i;
+
+	if (!split_array)
+		return ;
+	i = 0;
+	while (split_array[i] != NULL)
+	{
+		free(split_array[i]);
+		i++;
+	}
+	free(split_array);
+}
+

@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:06:36 by jcheron           #+#    #+#             */
-/*   Updated: 2024/11/07 17:27:17 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/18 16:45:56 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	ft_putstr(char *s);
 void	ft_putstr_fd(char *s, int fd);
 
 char	**ft_split(char const *s, char c);
+
+void	free_tab(char **tab);
 
 char	*ft_strchr(const char *s, int c);
 
