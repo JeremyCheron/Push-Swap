@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:19:33 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 16:52:32 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 10:39:27 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,19 @@ char	**split(char *s, char c)
 	return (result_array);
 }
 
-void	free_split(char **split_array)
+void	free_split(char **split)
 {
-	int i;
+	int	i;
 
-	if (!split_array)
+	if (!split)
 		return ;
 	i = 0;
-	while (split_array[i] != NULL)
+	while (split[i])
 	{
-		free(split_array[i]);
+		free(split[i]);
+		split[i] = NULL;
 		i++;
 	}
-	free(split_array);
+	free(split);
+	split = NULL;
 }
-

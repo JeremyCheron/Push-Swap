@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:38:10 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 14:21:54 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 10:34:19 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ void	free_stack(t_stack_node **stack)
 
 void	free_errors(t_stack_node **a)
 {
+	free_stack(a);
+	ft_printf(ERROR);
+	exit(1);
+}
+
+void	free_splitted_errors(t_stack_node **a, char **splitted)
+{
+	free_split(splitted);
 	free_stack(a);
 	ft_printf(ERROR);
 	exit(1);

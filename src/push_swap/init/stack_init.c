@@ -6,31 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:29:44 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 15:10:56 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 10:35:17 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static long	ft_atol(const char *s)
-{
-	long	result;
-	int		sign;
-
-	result = 0;
-	sign = 1;
-	while (ft_iswhitespace(*s))
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-			sign = -1;
-		s++;
-	}
-	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
-	return (result * sign);
-}
 
 static void	append_node(t_stack_node **stack, int n)
 {
@@ -86,6 +66,26 @@ void	init_stack_a(t_stack_node **a, char **av)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a);
+		append_node(a, (int)n);
+		i++;
+	}
+}
+
+void	init_split_stack_a(t_stack_node **a, char **av)
+{
+	long	n;
+	int		i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (error_syntax(av[i]))
+			free_splitted_errors(a, av);
+		n = ft_atol(av[i]);
+		if (n > INT_MAX || n < INT_MIN)
+			free_splitted_errors(a, av);
+		if (error_duplicate(*a, (int)n))
+			free_splitted_errors(a, av);
 		append_node(a, (int)n);
 		i++;
 	}

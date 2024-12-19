@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:06:36 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 16:46:06 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 10:28:21 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_split_next
 }				t_split_next;
 
 int		ft_atoi(const char *str);
+
+long	ft_atol(const char *s);
 
 void	ft_bzero(void *s, size_t n);
 

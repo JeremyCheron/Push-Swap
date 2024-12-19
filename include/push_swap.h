@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:23:54 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 16:52:48 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 10:39:41 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
+void			free_splitted_errors(t_stack_node **a, char **splitted);
 
 //***Stack initiation
 void			init_stack_a(t_stack_node **a, char **argv);
+void			init_split_stack_a(t_stack_node **a, char **av);
 char			**split(char *s, char c);
-void			free_split(char **split_array);
+void			free_split(char **split);
 
 //***Nodes initiation
 void			init_nodes_a(t_stack_node *a, t_stack_node *b);
