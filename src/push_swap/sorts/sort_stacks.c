@@ -6,11 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:47:34 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 14:23:01 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 12:10:27 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../../include/push_swap.h"
 
 static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {

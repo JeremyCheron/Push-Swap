@@ -6,11 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:47:27 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/18 15:04:26 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 12:09:51 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../../include/push_swap.h"
 
 static void	rotate(t_stack_node **stack)
 {

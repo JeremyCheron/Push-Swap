@@ -6,11 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:48:46 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/19 10:38:38 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 12:10:43 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../include/push_swap.h"
 
 void	sort(t_stack_node **a, t_stack_node **b)
 {

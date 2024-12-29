@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/12/18 18:02:38 by jcheron          ###   ########.fr        #
+#    Updated: 2024/12/29 10:37:40 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,76 +19,44 @@ ECHO				=		/usr/bin/echo
 #                                                                              #
 # ############################################################################ #
 
-SRC_DIR				:=		src
-INC_DIR				:=		include
-OBJ_DIR				:=		obj
-NAME				:=		push_swap.a
-CC					:=		cc
-CCFLAGS				:=		-Wall -Werror -Wextra -g
+NAME				:=		push_swap
+CC					:=		gcc
+CFLAGS				:=		-Wall -Werror -Wextra -I libft -g
+RM					:=		rm -rf
+LIBFT_PATH			:=		libft/
+LIBFT				:=		libft/libft.a
 # include	srcs.mk
 
-FILES = $(shell find $(SRC_DIR) -type f -name "*.c" | sed 's/\.c//' | sed 's/$(SRC_DIR)//')
-# ############################################################################ #
-#                                                                              #
-#                           Objects                                            #
-#                                                                              #
-# ############################################################################ #
+SRCS =	src/push_swap/commands/push.c src/push_swap/commands/rev_rotate.c		\
+		src/push_swap/commands/rotate.c src/push_swap/commands/swap.c			\
+		src/push_swap/errors/handle_errors.c									\
+		src/push_swap/init/init_a_to_b.c src/push_swap/init/init_b_to_a.c		\
+		src/push_swap/init/split.c src/push_swap/init/stack_init.c			\
+		src/push_swap/sorts/sort_stacks.c src/push_swap/sorts/sort_three.c	\
+		src/push_swap/sorts/stack_utils.c src/push_swap/push_swap.c
 
-OBJS				:=		$(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
+OBJS				=		$(SRCS:.c=.o)
 
-# ############################################################################ #
-#                                                                              #
-#                           Colors                                             #
-#                                                                              #
-# ############################################################################ #
+$(NAME) : $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-DEF_COLOR			=	\033[0;39m
-GRAY				=	\033[0;90m
-RED					=	\033[0;91m
-GREEN				=	\033[0;92m
-YELLOW				=	\033[0;93m
-BLUE				=	\033[0;94m
-MAGENTA				=	\033[0;95m
-CYAN				=	\033[0;96m
-WHITE				=	\033[0;97m
-TERM_UP				=	\033[1A
-TERM_CLEAR_LINE		=	\033[2K\r
+$(LIBFT) :
+	@$(MAKE) -C $(LIBFT_PATH)
 
-# ############################################################################ #
-#                                                                              #
-#                           Bin / Lib                                          #
-#                                                                              #
-# ############################################################################ #
+%.o : %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): _header _obj_header $(OBJS) _obj_footer
-	@printf "$(MAGENTA)Making archive $(BLUE)\"%s\"$(MAGENTA)...$(DEF_COLOR)" $@
-	@ar -rcs $@ $(OBJS)
-	@printf "$(TERM_CLEAR_LINE)$(GREEN)Done building archive $(BLUE)\"%s\"$(GREEN) !\n$(DEF_COLOR)" $@
-	@$(CC) $(OBJS) -o push_swap $(CCFLAGS)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@
-	@mkdir -p $(@D)
-	@$(CC) -c $< -o $@ -I$(INC_DIR) $(CFLAGS)
-	@printf "$(TERM_UP)"
-
-# ############################################################################ #
-#                                                                              #
-#                           Rules                                              #
-#                                                                              #
-# ############################################################################ #
-
-.PHONY:	all clean fclean re norminette _header _obj_header _obj_footer test
+.PHONY:	all clean fclean re norminette
 
 all:	$(NAME)
 
-clean:
-		@printf "$(YELLOW)Removing %d objects...\n$(DEF_COLOR)" $(words $(OBJS))
-		@$(RM) -rf $(OBJ_DIR)
+clean :
+	@$(RM) $(OBJS)
+	@make clean -C $(LIBFT_PATH)
 
-fclean: clean
-		@printf "$(YELLOW)Removing \"%s\"...\n$(DEF_COLOR)" $(NAME)
-		@$(RM) $(NAME)
+fclean : clean
+	@$(RM) $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_PATH)
 
 re:		fclean all
 
@@ -96,15 +64,3 @@ norminette:
 		@norminette $(SRC_DIR) $(INC_DIR) | grep -Ev '^Notice|OK!$$'	\
 		&& $(ECHO) -e '\033[1;31mNorminette KO!'						\
 		|| $(ECHO) -e '\033[1;32mNorminette OK!'
-
-_header:
-		@printf "$(GREEN)Welcome to $(BLUE)\"%s\"$(GREEN) builder !\n$(DEF_COLOR)" $(NAME)
-
-_obj_header:
-		@printf "$(MAGENTA)Building objects$(DEF_COLOR)...\n"
-
-_obj_footer:
-		@printf "$(TERM_UP)$(TERM_CLEAR_LINE)$(GREEN)Done building $(BLUE)%d$(GREEN) object(s) !\n$(DEF_COLOR)" $(words $(OBJS))
-
-
-# include test.mk

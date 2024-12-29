@@ -6,11 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:07:58 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/17 15:12:41 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/19 12:10:09 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../../include/push_swap.h"
 
 static void	set_target_b(t_stack_node *a, t_stack_node *b)
 {

@@ -6,11 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:19:33 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/19 10:39:27 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/29 10:55:22 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../../include/push_swap.h"
 
 static int	_count_words(char *s, char c)
 {

@@ -6,15 +6,14 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:23:54 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/19 10:39:41 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/29 10:38:24 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
-# include "ft_printf.h"
+# include "../libft/include/libft.h"
 # include <stdbool.h>
 # include <limits.h>
 

@@ -6,11 +6,11 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:38:10 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/19 10:34:19 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/12/29 10:55:18 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../../include/push_swap.h"
 
 int	error_syntax(char *str_n)
 {
@@ -19,8 +19,8 @@ int	error_syntax(char *str_n)
 			|| ft_isdigit(*str_n)))
 		return (1);
 	if ((*str_n == '+'
-			|| *str_n == '-'
-			&& !ft_isdigit(str_n[1])))
+			|| *str_n == '-')
+		&& !ft_isdigit(str_n[1]))
 		return (1);
 	while (*++str_n)
 	{
