@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 11:26:43 by jcheron           #+#    #+#              #
-#    Updated: 2024/12/29 10:42:11 by jcheron          ###   ########.fr        #
+#    Updated: 2025/01/21 08:17:56 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ PRINTF_PATH				:=		ft_printf/
 GNL_PATH				:=		get_next_line/
 
 CC						:=		gcc
-CFLAGS					:=		-Wall -Werror -Wextra
+CFLAGS					:=		-Wall -Werror -Wextra -g
 
 RM						:=		rm -f
 

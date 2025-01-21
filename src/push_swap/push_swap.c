@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:48:46 by jcheron           #+#    #+#             */
-/*   Updated: 2024/12/19 12:10:43 by jcheron          ###   ########.fr       */
+/*   Updated: 2025/01/21 08:29:23 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		sort_three(a);
 	else
 		sort_stacks(a, b);
+}
+
+void	handle_syntax_error(bool is_split, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (error_syntax(argv[i]))
+		{
+			if (is_split)
+				free_split(argv);
+			ft_printf(ERROR);
+			exit (1);
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -38,6 +56,7 @@ int	main(int argc, char **argv)
 		argv = split(argv[1], ' ');
 		is_split = true;
 	}
+	handle_syntax_error(is_split, argv);
 	if (is_split)
 		init_split_stack_a(&a, argv + 1);
 	else
